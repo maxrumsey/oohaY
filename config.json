@@ -1,0 +1,6 @@
+{
+	"level": 2,
+	"db": "mongodb://localhost:27017/oohaY",
+	"prefix": "https://maxrumsey.xyz",
+	"base": "https://maxrumsey.xyz"
+}

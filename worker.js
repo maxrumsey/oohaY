@@ -1,10 +1,13 @@
+global.config = require('./config.json')
+
 const db = require('./shared/db.js');
 const scraper = require('./worker/scraper.js')
+
 /*
  * Config Variables
  */
-global.level = 2;
-global.prefix = 'https://wavets.com.au'
+global.level = global.config.level;
+global.prefix = global.config.prefix;
 
 async function loop(override) {
 	let scheduled = [];
@@ -49,7 +52,7 @@ async function loop(override) {
 
 if (global.level >= 1) console.log(`${buildTimeStamp()} Beginning search.`)
 
-loop([{url: 'https://wavets.com.au/'}]);
+loop([{ url: global.config.base }]);
 
 function buildTimeStamp() {
 	const date = (new Date()) + ''

@@ -1,13 +1,13 @@
 {
-  "name": "searchengine",
+  "name": "oohaY",
   "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
+  "description": "A search engine and web crawler in one.",
+  "main": "worker.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "author": "",
-  "license": "ISC",
+  "author": "Max Rumsey <max@maxrumsey.xyz> (maxrumsey.xyz)",
+  "license": "MIT",
   "dependencies": {
     "axios": "^0.18.0",
     "chalk": "^2.4.2",

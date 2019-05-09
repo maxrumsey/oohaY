@@ -1,5 +1,5 @@
 const mongoose = require('mongoose');
-mongoose.connect('mongodb://localhost:27017/searchengine', {useNewUrlParser: true});
+mongoose.connect(global.config.db, {useNewUrlParser: true});
 
 exports.page = mongoose.model('Page', {
 	url: String,

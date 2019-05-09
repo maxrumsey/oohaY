@@ -38,19 +38,22 @@ module.exports = async scheduled => {
 			const https = scheduled[i].url.startsWith('https://')
 			let push;
 			if (url == '#') continue;
-			else if (!url.startsWith('http')) continue;
-			else if (global.prefix && !url.startsWith(global.prefix)) continue;
+			else if (global.prefix && url.startsWith('http') && !url.startsWith(global.prefix)) continue;
+			else if (url.includes(':') && (!url.startsWith('http://') && !url.startsWith('http://'))) continue
 			else if (url.includes('.jpg')) continue;
 			else if (url.includes('.jpeg')) continue;
 			else if (url.includes('.png')) continue;
 			else if (url.includes('.gif')) continue;
 			else if (url.includes('.tiff')) continue;
 			else if (url.includes('.tif')) continue;
+			else if (url.includes('tel:')) continue;
 			else if (url == '/') push = ({url: buildURL(origUrl, https)})
 			else if (url.startsWith('/')) push = ({url: buildURL(origUrl, https, url)})
-			else push = ({url});
+			else if (url.startsWith('http')) push = ({url});
+			else push = ({url: buildLocalUrl(scheduled[i].url, url)})
 
 			if (obj.scheduleds.includes(push)) continue;
+			if (global.level == 3) console.log('Pushing URL: ' + push.url)
 			obj.scheduleds.push(push)
 		}
 	}
@@ -66,4 +69,18 @@ function buildTimeStamp() {
 	const date = (new Date()) + ''
 
 	return date.split(' ')[4]
+}
+function buildLocalUrl(original, addition) {
+	const url = urlMod.parse(original);
+	const prebase = url.host;
+	let base;
+	if (url.pathname[url.pathname.length - 1] == '/' || url.pathname == '') {
+		base = url.pathname + '/'
+	} else {
+		base = url.pathname.split('/')
+		base.pop();
+		base = base.join('/') + '/';
+	}
+	base = base.replace(/\/\//g, '/')
+	return (url.protocol + '//' + prebase + base + addition);
 }

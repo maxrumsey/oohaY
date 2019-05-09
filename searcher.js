@@ -1,3 +1,5 @@
+global.config = require('./config.json')
+
 const readline = require('readline');
 const db = require('./shared/db.js');
 const fs = require('fs');
