@@ -19,6 +19,7 @@ Config file format:
 	"level": 2, // - The log level. 0: Absolutely nothing. 1: Start and stop. 2: Verbose. 3: Debug.
 	"db": "mongodb://localhost:27017/oohaY", // - The MongoDB connection string. 
 	"prefix": "https://maxrumsey.xyz", // - The website the crawler will limit itself to. Replace with `undefined` to ignore this limit.
-	"base": "https://maxrumsey.xyz/index.html" // - Page to start crawling on.
+	"base": "https://maxrumsey.xyz/index.html", // - Page to start crawling on.
+	"limit": 10 // How many records should be returned at maximum.
 }
 ```

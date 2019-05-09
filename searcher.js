@@ -38,7 +38,8 @@ rl.question('Enter your one word search query: ', async (output) => {
 	arr.sort(function(a, b){return b.score - a.score});
 	console.log(`Search returned ${arr.length} result(s).\n`)
 	for (var i = 0; i < arr.length; i++) {
-		console.log(chalk.bgYellow(arr[i].title));
+		if (i >= global.config.limit) break;
+		console.log((i + 1) + '. ' + chalk.bgYellow(arr[i].title));
 		console.log(chalk.underline(arr[i].url))
 		console.log(chalk.grey(`Relative Page Score: ${res[i].score} | Query Hits: ${arr[i].hits}\n`))
 	}

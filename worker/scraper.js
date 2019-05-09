@@ -39,7 +39,8 @@ module.exports = async scheduled => {
 			let push;
 			if (url == '#') continue;
 			else if (global.prefix && url.startsWith('http') && !url.startsWith(global.prefix)) continue;
-			else if (url.includes(':') && (!url.startsWith('http://') && !url.startsWith('http://'))) continue
+			else if (url.includes(':') && (!url.startsWith('https://') && !url.startsWith('http://'))) continue;
+			else if (url.includes('#')) push = ({url: url.split('#')[0]})
 			else if (url.includes('.jpg')) continue;
 			else if (url.includes('.jpeg')) continue;
 			else if (url.includes('.png')) continue;

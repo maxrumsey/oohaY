@@ -1,6 +1,7 @@
 {
 	"level": 2,
-	"db": "mongodb://localhost:27017/oohaY",
-	"prefix": "https://maxrumsey.xyz",
-	"base": "https://maxrumsey.xyz"
+	"db": "mongodb://localhost:27017/oohaY-waves",
+	"prefix": "https://wavets.com.au",
+	"base": "https://wavets.com.au",
+	"limit": 10
 }
