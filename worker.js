@@ -31,29 +31,38 @@ async function loop(override) {
 		console.log('List of websites to index is empty.')
 		process.exit(0);
 	}
+
 	// Scraping websites. Returns indexed pages and new todo.
 	const { indexeds, scheduleds } = await scraper(scheduled);
+
 	// Deleting indexed pages from the DB todo list.
 	for (var i = scheduled.length - 1; i >= 0; i--) {
 		await db.deleteScheduled(scheduled[i]._id);
 	}
+
 	// Adding indexed pages to the DB
 	for (var i = indexeds.length - 1; i >= 0; i--) {
 		await db.createPage(indexeds[i]);
 	}
+
 	// Adding links to the DB todo list.
 	for (var i = scheduleds.length - 1; i >= 0; i--) {
 		if (await db.getScheduledByURL(scheduleds[i].url)) continue;
 		await db.createScheduled(scheduleds[i]);
 	}
+	
 	// Repeats
 	loop()
 }
 
 if (global.level >= 1) console.log(`${buildTimeStamp()} Beginning search.`)
 
+// Starting loop with override URL (config.base)
 loop([{ url: global.config.base }]);
 
+/*
+ * Building Timestamp for Logging
+ */
 function buildTimeStamp() {
 	const date = (new Date()) + ''
 
