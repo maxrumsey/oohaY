@@ -8,9 +8,11 @@ const chalk = require('chalk');
 const logoFile = fs.readFileSync('./ascii.txt').toString();
 const logoArr = logoFile.split('\n')
 
+console.log()
 for (var i = 0; i < logoArr.length; i++) {
 	console.log(logoArr[i])
 }
+console.log()
 
 const rl = readline.createInterface({
   input: process.stdin,

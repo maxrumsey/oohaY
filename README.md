@@ -23,3 +23,6 @@ Config file format:
 	"limit": 10 // How many records should be returned at maximum.
 }
 ```
+
+**How can I re-crawl the website(s)?**
+Run `db.pages.remove({})` on the MongoDB shell. Run `node worker`.
