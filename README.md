@@ -14,7 +14,7 @@ oohaY requires a MongoDB database and the latest version of Node. Oh, and whatev
 
 **How do I change the config?**
 Config file format:
-```JSON
+```
 {
 	"level": 2, // - The log level. 0: Absolutely nothing. 1: Start and stop. 2: Verbose. 3: Debug.
 	"db": "mongodb://localhost:27017/oohaY", // - The MongoDB connection string. 
